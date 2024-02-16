@@ -33,12 +33,14 @@ h1 {
 
 input[type="text"] {
     flex: 1;
-    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    margin-right: 5px;
 }
-
 
 button {
     padding: 10px 20px;
@@ -48,49 +50,71 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: 10px; /* Adjust margin for better spacing */
+    margin-left: 10px; 
+    font-size: 18px;
 }
-
 
 button:hover {
     background-color: #0056b3;
 }
 
-.button-container {
-    margin-left: 10px;
-}
-
 .high-priority {
-    display: inline-block;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     padding: 5px 10px;
     background-color: red;
     color: white;
     border-radius: 5px;
     margin-right: 5px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .medium-priority {
     background-color: orange;
-    display: inline-block;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     padding: 5px 10px;
     color: white;
     border-radius: 5px;
     margin-right: 5px;
+    font-size: 18px;
+    text-transform: uppercase; 
 }
 
 .low-priority {
     background-color: green;
-    display: inline-block;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     padding: 5px 10px;
     color: white;
     border-radius: 5px;
     margin-right: 5px;
+    font-size: 18px;
+    text-transform: uppercase; 
+    
 }
 
 .task-container {
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 10px; 
+    margin: 10px;
+    font-size: 18px;
+    text-transform: uppercase; 
+    width: 300px;
+}
+
+.columns-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 10px; 
+}
+
+/* Update styles for the task name */
+.task-name {
+    overflow-wrap: break-word; /* Allow task names to break into multiple lines if needed */
 }

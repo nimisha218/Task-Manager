@@ -15,25 +15,27 @@ function renderItems() {
 
     for (const [idx, task] of Object.entries(items)) {
         const container = document.createElement("div");
-        container.classList.add("task-container"); // Add task-container class
+        container.classList.add("task-container");
 
         const text = document.createElement("p");
-        text.style.display = "inline";
-        text.style.marginRight = "10px";
-        text.innerHTML = `${task.name} - <span class="${task.priority.toLowerCase()}-priority">${task.priority}</span>: `;
+        text.textContent = task.name; // Display task name
+
+        const prioritySpan = document.createElement("span");
+        prioritySpan.textContent = task.priority; // Display priority
+        prioritySpan.classList.add(`${task.priority.toLowerCase()}-priority`); // Add priority class
 
         const button = document.createElement("button");
         button.textContent = "DONE";
         button.onclick = () => removeItem(idx);
 
+        // Add task name, priority, and button to the task container
         container.appendChild(text);
+        container.appendChild(prioritySpan);
         container.appendChild(button);
 
         itemsDiv.appendChild(container);
     }
 }
-
-
 
 function loadItems() {
     const oldItems = localStorage.getItem(storageKey)
