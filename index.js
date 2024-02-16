@@ -15,12 +15,12 @@ function renderItems() {
 
     for (const [idx, task] of Object.entries(items)) {
         const container = document.createElement("div");
-        container.style.marginBottom = "10px";
+        container.classList.add("task-container"); // Add task-container class
 
         const text = document.createElement("p");
         text.style.display = "inline";
         text.style.marginRight = "10px";
-        text.textContent = `${task.name} - Priority: ${task.priority}`;
+        text.innerHTML = `${task.name} - <span class="${task.priority.toLowerCase()}-priority">${task.priority}</span>: `;
 
         const button = document.createElement("button");
         button.textContent = "DONE";
