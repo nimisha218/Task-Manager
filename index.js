@@ -5,30 +5,34 @@ const input = document.getElementById("itemInput")
 const storageKey = "items"
 
 function renderItems() {
+    // Sort tasks by priority
+    items.sort((a, b) => {
+        const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+    });
 
     itemsDiv.innerHTML = null;
 
-    for (const [idx, item] of Object.entries(items)) {
+    for (const [idx, task] of Object.entries(items)) {
+        const container = document.createElement("div");
+        container.style.marginBottom = "10px";
 
-        const container = document.createElement("div")
-        container.style.marginBottom = "10px"
+        const text = document.createElement("p");
+        text.style.display = "inline";
+        text.style.marginRight = "10px";
+        text.textContent = `${task.name} - Priority: ${task.priority}`;
 
-        const text = document.createElement("p")
-        text.style.display = "inline"
-        text.style.marginRight = "10px"
-        text.textContent = item
+        const button = document.createElement("button");
+        button.textContent = "DONE";
+        button.onclick = () => removeItem(idx);
 
-        const button = document.createElement("button")
-        button.textContent = "DONE"
+        container.appendChild(text);
+        container.appendChild(button);
 
-        button.onclick = () => removeItem(idx)
-
-        container.appendChild(text)
-        container.appendChild(button)
-
-        itemsDiv.appendChild(container)
+        itemsDiv.appendChild(container);
     }
 }
+
 
 
 function loadItems() {
@@ -43,16 +47,23 @@ function saveItems() {
 }
 
 function addItem() {
-
     const value = input.value;
+    const priority = prioritySelect.value; 
+
     if (!value) {
-        alert("You can't add an empty item!")
-        return
+        alert("You can't add an empty item!");
+        return;
     }
-    items.push(value)
-    renderItems()
-    input.value = ""
-    saveItems()
+
+    const task = {
+        name: value,
+        priority: priority
+    };
+
+    items.push(task);
+    renderItems();
+    input.value = "";
+    saveItems();
 }
 
 function removeItem(idx) {
