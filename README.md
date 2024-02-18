@@ -22,7 +22,7 @@ git clone https://github.com/nimisha218/Task-Manager.git
 ## Usage
 
 1. Enter a task in the input field.
-2. Select a priority for the task from the drop-down menu
+2. Select a priority for the task from the drop-down menu.
 3. Click the "ADD TASK" button to add the task to the list.
 4. To mark a task as done, click the "DONE" button next to it.
 
